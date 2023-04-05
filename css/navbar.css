@@ -1,0 +1,194 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.lww_header {
+    width: 100%;
+    background-color: white;
+    height: 60px;
+    /*阴影:左，下，左右*/
+    box-shadow: 0px 3px 0px #d0d0d0;
+    /*定位*/
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_wrap {
+    min-width: 1000px;
+    width: auto !important;
+    height: 65px;
+    display: flex;
+}
+
+.header_logo {
+    width: 130px;
+    height: 65px;
+    background-image: url(../images/header-small-sprites3.png);
+    background-size: 120px 38px;
+    /*居中图片*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header_nav {
+    margin: 0px;
+    padding-left: 40px;
+    display: block;
+    width: 450px;
+    height: 65px;
+    line-height: 65px;
+    display: flex;
+    display: -webkit-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.header_nav > li > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.header_nav > li, .header_nav > li > a {
+    list-style: none;
+    flex: 1;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #282828;
+}
+
+.header_nav_hover {
+    border-bottom: 3px solid #FFA500;
+}
+
+
+.header_search {
+    width: 130px;
+    height: 30px;
+    background-color: #efefef;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    border-radius: 0.525rem;
+    margin-left: 10px;
+}
+
+.header_search > input {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    font-size: 18px;
+    background-color: #efefef;
+    /*取消边框点击出现样式*/
+    outline-style: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    border-radius: 0.525rem;
+    color: #C0C0C0;
+
+}
+
+.header_search > a {
+    font-size: 22px;
+    font-weight: 800;
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+a{
+    cursor: pointer;
+}
+/*未登录显示*/
+.login-out {
+    width: 290px;
+    height: 65px;
+    color: orange;
+    justify-content: flex-end !important;
+    align-items: center !important;
+
+}
+
+.login-out > a:nth-child(1), .login-out > a:nth-child(2), .login-out > a:nth-child(3) {
+    font-size: 30px;
+}
+
+.login-out > a {
+    color: orange;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.login-out > span {
+    color: #efefef;
+}
+
+/*登录显示*/
+.login_info {
+    width: 290px;
+    height: 65px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login_info > a {
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.header_daka {
+    width: 60px;
+    height: 20px;
+    background-color: #1493e3;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 12px;
+    border-radius: 0.3rem;
+}
+
+.header_daka > a {
+    color: white;
+    text-decoration: none;
+}
+
+.header_msg {
+    width: 50px;
+    color: #666;
+    font-size: 12px;
+    padding: 0px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header_msg > i {
+    font-size: 15px;
+    padding: 0px;
+}
+
+.login_info > a:nth-child(3) > img {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+}
+.onclickClass{
+    background-color: orange !important;
+    color: white !important;
+}

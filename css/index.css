@@ -1,0 +1,228 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.local_con {
+    width: 1046px;
+    height: auto !important;
+
+    margin: 30px auto;
+}
+
+/*左边信息*/
+.local_con_left {
+    width: 76%;
+    float: left;
+    background-color: white;
+    margin-right: 4%;
+    margin-top: 10px;
+    height: auto !important;
+
+}
+
+/*左边内容*/
+.local_con_left_content {
+    width: 100%;
+    min-height: 430px;
+    height: auto !important;
+}
+
+/*每一个内容*/
+.local_con_left_content > div {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.changelocal_con_left_content {
+    background-color: #f6f6f6;
+}
+
+/*照片*/
+.local_con_left_content_img {
+    width: 30%;
+    height: 80%;
+}
+
+/*内部标题*/
+.local_con_left_content_title {
+    width: 60%;
+    height: 80%;
+    margin-left: 2%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.local_con_left_content_title > div:nth-child(1) {
+    font-size: 18px;
+    color: #333;
+    width: 100%;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.local_con_left_content_title > div:nth-child(2) {
+    width: 100%;
+    font-size: 14px;
+    height: 88px;
+    line-height: 22px;
+    color: #666666;
+    overflow: hidden;
+}
+
+.local_con_left_content_title > div:nth-child(3) {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+    font-size: 14px;
+}
+
+.local_con_left_content_title > div:nth-child(3) > span:nth-child(1) {
+    margin-right: 10px;
+}
+
+/*左边顶部搜索框*/
+.local_con_left_sousuo {
+    width: 100%;
+    min-height: 50px;
+    height: auto !important;
+    box-shadow: 0px 2px 0px #e5e5e5;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.local_con_left_sousuo > ul {
+    margin: 0px;
+    padding: 0px;
+    width: 80%;
+    min-height: 50px;
+    height: auto !important;
+
+}
+
+.local_con_left_sousuo > ul > li {
+    list-style: none;
+    width: 15%;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3.125rem;
+    cursor: pointer;
+    float: left;
+    margin-right: 3%;
+    margin-bottom: 10px;
+    border: 1px solid #E9E9E9;
+}
+
+/*li选中和不选中的样式*/
+.change_local_con_left_sousuo_li {
+    color: white;
+    background-color: orange;
+    border: 0px;
+}
+
+.unchange_local_con_left_sousuo_li {
+    background-color: #f6f6f6;
+    color: #666;
+}
+
+
+.local_con_left_sousuo > span {
+    width: 20%;
+    height: 50px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.local_con_left_sousuo > span > label {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+    color: orange;
+}
+
+/*右边信息*/
+.local_con_right {
+    float: left;
+    width: 18%;
+    padding-top: 0px;
+    min-height: 600px;
+    height: auto !important;
+}
+
+.local_con_right > span:nth-child(1) {
+    font-size: 18px;
+    line-height: 18px;
+    padding: 0px;
+    margin: 0px;
+    color: #333;
+}
+
+.local_con_right > div {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.local_con_right_div_img {
+    width: 40%;
+    height: 100%;
+}
+
+.local_con_right_div_content {
+    width: 60%;
+    height: 100%;
+}
+
+.local_con_right_div_content > div:nth-child(1) {
+    width: 90%;
+    height: 27.5px;
+    padding-left: 10%;
+    font-size: 14px;
+    color: #333;
+    /*使用以下可以使得多行文本用..代替:只允许在内核为谷歌的情况下使用
+    ie并不兼容.使用了
+    line-height:14px;
+    max-height:27.5px;
+    弥补ie的不足。使得了虽然没有省略号但是不溢出
+    */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; /**/
+    -webkit-line-clamp: 2; /* 控制显示的行数 */
+    line-height: 14px; /* 对不支持浏览器的 */
+    max-height: 27.5px; /* 对不支持浏览器的弥补 */
+}
+
+.local_con_right_div_content > div:nth-child(2) {
+    width: 90%;
+    padding-left: 10%;
+    font-size: 14px;
+    height: 30px;
+    line-height: 42px;
+    color: orange;
+    font-weight: 500;
+    margin-top: 12px;
+}

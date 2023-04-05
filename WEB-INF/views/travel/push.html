@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-发布</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/push.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/ending.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/jquery-ui-1.13.1/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link href="/js/froala_editor/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <!--文件上传-->
+    <script src="/js/jquery-ui-1.13.1/jquery-ui.js"></script>
+    <script src="/js/jquery-upload/cupload.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+
+    <!--富文本编辑器 -->
+    <script src="/js/froala_editor/js/froala_editor.min.js"></script>
+    <!--[if lt IE 9]
+      <script src="../js/froala_editor_ie8.min.js"></script>
+    <![endif]-->
+    <script src="/js/froala_editor/js/plugins/tables.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/lists.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/colors.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/media_manager.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/font_family.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/font_size.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/block_styles.min.js"></script>
+    <script src="/js/froala_editor/js/plugins/video.min.js"></script>
+
+</head>
+<body>
+
+<div th:replace="/common/navbar :: navbar(4)"></div>
+
+
+<div id="app">
+	<!--阅读量-->
+	<div style="display: none" id="watch" th:text="${travelnotes?.getWatch()}"></div>
+	<!--用户id-->
+	<div id="userId" style="display: none" th:text="${session.user?.id}"></div>
+	<!--界定保存还是添加-->
+	<div id="type" style="display: none" th:text="${type}"></div>
+	<!--获取文章id-->
+	<div  style="display: none" id="artId" th:text="${travelnotes?.getId()}"></div>
+	<!--获取文章内容-->
+	<div style="display: none" id="artContent" th:text="${travelnotes?.getContent()}"></div>
+	<!--获取封面信息-->
+	<div style="display: none" id="artCover" th:text="${travelnotes?.getCover()}"></div>
+	<div class="select_type">
+		<span>发布游记/攻略</span>
+		<div id="pushStartEgy"><i></i>攻略</div>
+		<div id="pushTravelNotes" class="change_select_type_div"><i class="iconfont icon-gou change_select_type_i"></i>游记</div>
+	</div>
+	<script>
+		$(function () {
+			$("#pushStartEgy").click(function () {
+				window.location.href="/pushStartEgy";
+			});
+			$("#pushTravelNotes").click(function () {
+				window.location.href="/pushTravelNotes";
+			})
+		})
+	</script>
+	<div class="input_tilte">
+		<input id="input_sr" type="text" placeholder="请在这里输入标题" maxlength="48" th:value="${travelnotes?.getTitle()}">
+		<strong>可输入<span>48</span>个字</strong>
+	</div>
+
+	<!--图片上传-->
+	<div class="loadup_img">
+		<div id="cupload-1">
+
+		</div>
+	</div>
+
+
+	<!--文章信息-->
+	<div class="content_info">
+		<div>
+			<span>出发时间</span>
+			<div><input th:value="${travelnotes?.getGoTime()}" type="text" id="datepicker"></div>
+		</div>
+		<div>
+			<span>人物</span>
+			<div>
+				<select id="accompanys">
+					<option th:selected="${travelnotes?.getAccompany() == '一个人'|| travelnotes?.getAccompany() == null}" value="一个人">一个人</option>
+					<option th:selected="${travelnotes?.getAccompany() == '情侣/夫妻'}" value="情侣/夫妻">情侣/夫妻</option>
+					<option th:selected="${travelnotes?.getAccompany() == '带孩子'}"  value="带孩子">带孩子</option>
+					<option th:selected="${travelnotes?.getAccompany() == '家庭出游'}" value="家庭出游">家庭出游</option>
+					<option th:selected="${travelnotes?.getAccompany() == '和朋友'}" value="和朋友">和朋友</option>
+					<option th:selected="${travelnotes?.getAccompany() == '和同学'}" value="和同学">和同学</option>
+				</select>
+			</div>
+		</div>
+		<div>
+			<span>出行天数</span>
+			<div><input th:value="${travelnotes?.getDays()}" id="days" maxlength="3" style="border: 0px;outline: none;text-align: right;" type="text" placeholder="输入天数">
+			</div>
+		</div>
+		<div>
+			<span>花费/RMB</span>
+			<div><input th:value="${travelnotes?.getMoney()}" id="money" maxlength="5" style="border: 0px;outline: none;text-align: right;" type="text" placeholder="输入花费">
+			</div>
+		</div>
+		<div>
+			<span>旅游地点</span>
+			<div>
+				<select id="place">
+					<option th:selected="${travelnotes?.getPlace() == '安徽' || travelnotes?.getPlace() == null}" value="安徽">安徽</option>
+					<option th:selected="${travelnotes?.getPlace() == '广东'}" value="广东">广东</option>
+					<option th:selected="${travelnotes?.getPlace() == '广西'}" value="广西">广西</option>
+					<option th:selected="${travelnotes?.getPlace() == '海南'}" value="海南">海南</option>
+					<option th:selected="${travelnotes?.getPlace() == '深圳'}" value="深圳">深圳</option>
+					<option th:selected="${travelnotes?.getPlace() == '上海'}" value="上海">上海</option>
+					<option th:selected="${travelnotes?.getPlace() == '四川'}" value="四川">四川</option>
+					<option th:selected="${travelnotes?.getPlace() == '杭州'}" value="杭州">杭州</option>
+					<option th:selected="${travelnotes?.getPlace() == '贵州'}" value="贵州">贵州</option>
+					<option th:selected="${travelnotes?.getPlace() == '重庆'}" value="重庆">重庆</option>
+					<option th:selected="${travelnotes?.getPlace() == '成都'}" value="成都">成都</option>
+					<option th:selected="${travelnotes?.getPlace() == '湖北'}" value="湖北">湖北</option>
+					<option th:selected="${travelnotes?.getPlace() == '湖南'}" value="湖南">湖南</option>
+				</select>
+			</div>
+		</div>
+	   <div>
+		   <span>类别</span>
+		   <div>
+			   <select id="classify">
+				   <option  th:selected="${travelnotes?.getClassify() == '特别策划' || travelnotes?.getClassify() == null}" value="特别策划">特别策划</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '美食'}" value="美食">美食</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '节庆'}" value="节庆">节庆</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '登山'}" value="登山">登山</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '旅行'}" value="旅行">旅行</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '滑雪'}" value="滑雪">滑雪</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '摄影'}" value="摄影">摄影</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '建筑'}" value="建筑">建筑</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '家庭'}" value="家庭">家庭</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '自驾'}" value="自驾">自驾</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '周边'}" value="周边">周边</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '必备'}" value="必备">必备</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '观光'}" value="观光">观光</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '休闲'}" value="休闲">休闲</option>
+				   <option  th:selected="${travelnotes?.getClassify() == '数据报告'}" value="数据报告">数据报告</option>
+			   </select>
+		   </div>
+	   </div>
+	</div>
+
+	<!--输入文章摘要-->
+	<div class="input_abstract">
+		<input id="myabs" type="text" placeholder="请在这里输入摘要" maxlength="40" th:value="${travelnotes?.getAbs()}"/>
+	</div>
+	<!--富文本编辑器START-->
+	<div class="fwb">
+		<section id="editor">
+			<div id='edit'>
+
+			</div>
+		</section>
+	</div>
+	<!--富文本编辑器END-->
+
+	<!--发表按钮-->
+	<div class="fb_button">
+		<input type="button" value="发表" id="pushArticle"/>
+	</div>
+
+</div>
+		
+
+		
+		
+<!--主div的end-->
+<div th:replace="/common/ending :: end"></div>
+
+<script> 
+	var cupload1;//图片上传图片所需变量
+    $(function () {
+    	//获取文章id
+		var artId=$("#artId").text();
+		//如果没有，则生成一个
+		if(artId==null||artId==''){
+			artId=Number(Math.random().toString().substr(2) + Date.now()).toString(36);
+		}
+
+		  // 字数的计算
+        $("#input_sr").on("input", function () {
+            let length = $(this).val().length;
+            $(this).next().children("span").text(48 - length);
+        });
+
+		// 日历
+		$("#datepicker").datepicker({dateFormat: 'yy-mm-dd' });
+
+
+		// 图片上传
+		cupload1 = new Cupload({
+		    ele: '#cupload-1',
+		    width: 980,
+		    height: 200,
+			url:'http://localhost:8080/uploadCover?id='+artId,//图片上传异步请求
+			// deleteUrl:''//图片上传异步请求
+			deleteUrl:'http://localhost:8080/deleteCover?id='+artId,
+			imageAllowedTypes: ['jpeg', 'jpg', 'png','webp'],
+		});
+		
+		//富文本编辑器
+		$('#edit').editable({inlineMode: false, alwaysBlank: true, height: 400,	
+		    imageDeleteURL:'http://localhost:8080/deleteArticleImage?id='+artId,//删除图片
+			imageUploadURL:'http://localhost:8080/uploadArticleImage?id='+artId,//按钮的图片上传方式
+			pastedImagesUploadURL:'http://localhost:8080/uploadArticleImageByPasted?id='+artId
+		}).on('editable.afterRemoveImage', function (e, editor, $img) {//自定义删除参数.主要是实现删除时来让用户关联后端的参数
+                                   // Set the image source to the image delete params.
+                                   editor.options.imageDeleteParams = {src:$img.attr('src')};
+                                         // Make the delete request.
+                                              editor.deleteImage($img); });
+
+
+		//回写封面信息
+		let cover=$("#artCover").text();
+		if(cover!=null&&cover!=''&&cover!=undefined){
+			cupload1.createImageBox(cover);//cupload需要调用该方法回显图片-->
+			$(".cupload-upload-box").hide();//隐藏之前的照片框-->
+		}
+
+
+		//回写内容
+		let content=$("#artContent").text();
+		if(content!=null&&content!=''&&content!=undefined){
+			$('#edit').children("div").eq(1).html(content);//设置内容
+		};
+
+		//js发送post请求：理论上用异步请求即可，但为了学生方便操作改用js发送post请求的方式
+		function httpPost(URL,PARAMS){
+			var temp=document.createElement("form");
+			temp.action=URL,
+			temp.method="post",
+			temp.encoding="utf-8";
+			if (document.charset) {
+				document.charset = 'utf-8'; // IE不能识别form.accept-charset
+			}
+			else {
+				temp.setAttribute('accept-charset', 'utf-8');
+			}
+			temp.style.display="none";
+			for(let x in PARAMS){
+				let opt=document.createElement("textarea");
+				opt.name=x;
+				opt.value=PARAMS[x];
+				temp.appendChild(opt);
+			}
+			document.body.appendChild(temp);
+			temp.submit();
+			return temp;
+		}
+
+
+		//点击发布
+		$("#pushArticle").click(function () {
+
+			//用户id
+			let uid=$("#userId").text();
+			// let cover=cupload1.imageArr[0];//封面
+			let cover=$(".cupload-image-preview").attr("src");
+			let goTime=$("#datepicker").val();//日历时间
+			let content=$('#edit').children("div").eq(1).html();//文章内容
+			let accompany=$("#accompanys").val();//出游人员
+			let title=$("#input_sr").val();
+			let days=$("#days").val();
+			let money=$("#money").val();
+			let place=$("#place").val();
+			let classify=$("#classify").val();
+			let abs=$("#myabs").val();
+			let watch=$("#watch").text();
+			let type=$("#type").text();
+			if(watch==null||watch==undefined||watch==''){
+				watch=0;
+			}
+			var params={
+				"uid":uid,
+				"cover":cover,
+				"goTime":goTime,
+				"content":content,
+				"accompany":accompany,
+				"title":title,
+				"days":days,
+				"money":money,
+				"place":place,
+				"classify":classify,
+				"abs":abs,
+				"watch":watch,
+				"id":artId
+			}
+
+			if(type=='insert'){
+				httpPost("/insertTravelNotes",params);
+			}else{
+				httpPost("/updateTravelNotes",params);
+			}
+
+			// console.log(uid);
+			// console.log(artId);//文章id
+			// console.log(goTime);//出发时间
+			// console.log(cover);
+			// console.log(content);
+			// console.log(accompany);
+			// console.log(title);
+			// console.log(days);
+			// console.log(money);
+			// console.log(place);
+			// console.log(classify);
+			// console.log(abs);
+			// console.log(watch);
+		});
+
+
+});
+</script>
+
+
+</body>
+</html>

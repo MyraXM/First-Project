@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/ending.css"/>
+	<script src="/js/jquery.js" type="text/javascript"></script>
+	<style>
+		.container{
+			width: 100vw;
+			height:500px;
+			margin-top:5px;
+			background-image: url('/images/wKgE2l0VxGSAFPg0AAVbWqeaXt4000.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
+		}
+		.search-container{
+			width:42vw;
+			z-index: 1;
+			height:100px;
+			position: absolute;
+			top: 70%;
+			left: 50%;
+			border-radius: 0.3125rem;
+			transform: translateX(-50%);
+			background-color: #000000;
+			opacity: 0.7;
+		}
+		.searchTarget>input{
+			cursor: pointer;
+			
+		}
+			
+		.search-form{
+			position: absolute;
+			width:40vw;
+			height:100px;
+			top: 72%;
+			color: white;
+			left: 51%;
+			transform: translateX(-50%);
+			z-index: 999;
+		}
+		.searchTarget>label{
+			margin-right: 10%;
+		}
+		.searchText{
+			width:80%;
+			height: 40px;
+			margin-top: 10px;
+			border: 0px;
+			font-size: 18px;
+			padding: 0px;
+			padding-left: 10px;
+			outline: none;
+		}
+		.searchButton{
+			width:15%;
+			height:40px;
+			margin-top: 10px;
+			padding: 0px;
+			border: 0px;
+			cursor: pointer;
+			background-color: #ff9d15;
+			color: white;
+			font-weight: bold;
+			font-size: 16px;
+			border-radius: 0.3125rem;
+		}
+		.lb-div{
+			width: 150px;
+			height: 400px;
+			position: absolute;
+			right:40px;
+			bottom:40px;
+			z-index: 999;
+			display: flex;
+			display: -webkit-flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: flex-start;
+		}
+		.lb-div-children{
+			width: 100%;
+			height: 120px;
+		}
+		.lb-div>div:nth-child(1){
+			background-image: url(/images/wKgE2l0VxGSAFPg0AAVbWqeaXt4000.jpg);
+			background-size: cover;
+		}
+		.lb-div>div:nth-child(2){
+			background-image: url(/images/wKgE2l0aFHOAQTIqAAbVLgQTk8Q355.jpg);
+			background-size: cover;
+		}
+		.lb-div>div:nth-child(3){
+			background-image: url(/images/wKgE2l0bAz-AUqLVAAgd7dbvAMg911.jpg);
+			background-size: cover;
+		}
+		.change-lb-div-children{
+			border: 2px solid #ff9d00;
+		}
+		.selectTarget{
+			width: 1100px;
+			height: 100px;
+			background-color: red;
+			margin: 0px auto;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			background-image: url(/images/Snipaste_2022-06-05_11-27-29.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	
+	</style>
+</head>
+<body>
+<div th:replace="/common/navbar :: navbar(0)"></div>
+	<div class="container">
+		<div class="search-container"></div>
+		<form class="search-form">
+			<div class="searchTarget">
+				<input type="radio" name="searchTarget" value="攻略" checked="checked" />
+				<label for="攻略">攻略</label>
+				<input type="radio" name="searchTarget" value="游记" />
+				<label for="游记">游记</label>
+				<input type="radio" name="searchTarget" value="找人" />
+				<label for="找人">找人</label>
+			</div>
+			<input type="text" name="searchText" class="searchText" placeholder="搜攻略/游记/用户"/>
+			<input type="submit" class="searchButton" value="搜索"/>
+		</form>
+		<div class="lb-div">
+			<div class="lb-div-children change-lb-div-children"></div>
+			<div class="lb-div-children"></div>
+			<div class="lb-div-children"></div>
+		</div>
+	</div>
+	<div class="selectTarget"></div>
+
+	<!--主div的end-->
+	<div th:replace="/common/ending :: end"></div>
+
+
+	<script>
+		$(function(){
+			if(lb){//如果id存值，清空id定时器
+				clearInterval(lb);
+			}
+			let index=-1;
+			let lb=setInterval(function(){
+				index++;
+				if(index==0){
+					document.getElementsByClassName("container")[0].style.backgroundImage="url(/images/wKgE2l0VxGSAFPg0AAVbWqeaXt4000.jpg)";
+					document.getElementsByClassName("lb-div-children")[0].style.border="2px solid #ff9d00";
+					document.getElementsByClassName("lb-div-children")[1].style.border="0px";
+					document.getElementsByClassName("lb-div-children")[2].style.border="0px";
+			
+				}else if(index==1){
+					document.getElementsByClassName("container")[0].style.backgroundImage="url(/images/wKgE2l0aFHOAQTIqAAbVLgQTk8Q355.jpg)";
+					document.getElementsByClassName("lb-div-children")[1].style.border="2px solid #ff9d00";
+					document.getElementsByClassName("lb-div-children")[0].style.border="0px";
+					document.getElementsByClassName("lb-div-children")[2].style.border="0px";
+					
+				}else{
+					document.getElementsByClassName("container")[0].style.backgroundImage="url(/images/wKgE2l0bAz-AUqLVAAgd7dbvAMg911.jpg)";
+					document.getElementsByClassName("lb-div-children")[2].style.border="2px solid #ff9d00";
+					document.getElementsByClassName("lb-div-children")[0].style.border="0px";
+					document.getElementsByClassName("lb-div-children")[1].style.border="0px";
+					index=-1;
+				}
+			},2000);
+
+			$("#lb").click(function () {
+				let searchType=$("input[name='searchTarget']:checked").val().trim();
+				let searchText=$(".searchText").val();
+				window.location.href="/search?searchType="+searchType+"&searchText="+searchText;
+			});
+		})
+	
+	</script>
+</body>
+</html>

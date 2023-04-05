@@ -1,0 +1,209 @@
+.local_con {
+    width: 1046px;
+    height: auto;
+    max-height: 3000px !important;
+    margin: 30px auto;
+}
+
+/*左边信息*/
+.local_con_left {
+    width: 76%;
+    height: auto;
+    float: left;
+    margin-right: 4%;
+    margin-top: 10px;
+    min-height: 600px;
+    /**后面要修改成的高度**/
+    /* height: auto;
+    max-height:3000px !important; */
+}
+
+/*搜索*/
+.local_con_left_search {
+    width: 100%;
+    height: 100px;
+}
+
+/*按最新和最热搜索*/
+.local_con_left_search > div:nth-child(1) {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.local_con_left_search > div:nth-child(1) > span {
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/*点击查询最新游记或最热游记要用的样式*/
+.change_child_1 {
+    color: #ff9d00;
+}
+
+.unchange_child_1 {
+    color: #333;
+}
+
+/*花费和人均天数*/
+.local_con_left_search > div:nth-child(2) {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.local_con_left_search > div:nth-child(2) > span {
+    font-size: 12px;
+    font-family: Arial, "Lucida Grande", "Microsoft Yahei", "Hiragino Sans GB", "Hiragino Sans GB W3", SimSun, "PingFang SC", STHeiti;
+    color: #666;
+    margin-right: 10px;
+}
+
+/*内容盒子div*/
+.local_con_left_content {
+    width: 100%;
+    min-height: 220px;
+    height: auto !important;
+    border-bottom: 2px #EFEFEF dotted;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.local_con_left_content_img {
+    width: 12em;
+    height: 180px;
+}
+
+.local_con_left_content_img > img {
+    width: 12em;
+    height: 180px;
+}
+
+.local_con_left_content_text {
+    width: 36.4em;
+    height: 180px;
+}
+
+.local_con_left_content_text > div:nth-child(1) > a {
+    width: 50%;
+    height: 25px;
+    font-size: 20px;
+    line-height: 25px;
+    display: inline-block;
+    color: #ff7200;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.local_con_left_content_text > div:nth-child(1) > a:hover {
+    text-decoration: overline;
+}
+
+.local_con_left_content_text > div:nth-child(2) {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 25px;
+}
+
+.local_con_left_content_text > div:nth-child(2) > img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.local_con_left_content_text > div:nth-child(2) > div {
+    line-height: 20px;
+    font-size: 12px;
+    color: #ff7200;
+}
+
+.local_con_left_content_text > div:nth-child(3) {
+    height: 48px;
+    margin: 8px 0;
+    font-size: 12px;
+    line-height: 24px;
+    overflow: hidden;
+    color: #666;
+}
+
+
+/*右边信息*/
+.local_con_right {
+    float: left;
+    width: 20%;
+    padding-top: 0px;
+    min-height: 600px;
+    height: auto !important;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.lvgl {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 0px;
+    color: #666;
+}
+
+.lvgl > i {
+    margin-right: 10px;
+    color: #6fb6f3;
+    font-weight: 500;
+}
+
+.lvpm {
+    width: 100%;
+    height: auto;
+    list-style: none;
+    padding: 0px;
+    color: #666;
+}
+
+.lvpm > li {
+    list-style: none;
+    line-height: 30px;
+}
+
+.lvpm > li > em {
+    font-size: 20px;
+    font-family: Letter Gothic Std, Verdana, Geneva, sans-serif;
+    /* text-align: right; */
+    font-weight: bold;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.change_lvpm_q3 {
+    color: #ffa800;
+}
+
+.lvpm > li > strong {
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 19px;
+}
+
+.lvpm > li > a {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+}

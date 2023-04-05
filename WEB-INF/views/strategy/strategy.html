@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-旅游攻略</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/ending.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/page.css"/>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/jquery.z-pager.js" type="text/javascript"></script>
+</head>
+<body>
+<div th:replace="/common/navbar :: navbar(2)"></div>
+<!--主div的start-->
+<div class="local_con">
+    <!--左边start-->
+    <div class="local_con_left" style="padding-bottom: 30px;">
+        <!--顶部搜索Start-->
+        <div class="local_con_left_sousuo">
+            <ul>
+              <!--  <li class="change_local_con_left_sousuo_li">全部</li> -->
+                <li class="unchange_local_con_left_sousuo_li">全部</li>
+                <li class="unchange_local_con_left_sousuo_li">文化</li>
+                <li class="unchange_local_con_left_sousuo_li">特别策划</li>
+                <li class="unchange_local_con_left_sousuo_li">美食</li>
+                <li class="unchange_local_con_left_sousuo_li">节庆</li>
+                <li class="unchange_local_con_left_sousuo_li">登山</li>
+                <li class="unchange_local_con_left_sousuo_li">星旅游</li>
+                <li class="unchange_local_con_left_sousuo_li">滑雪</li>
+                <li class="unchange_local_con_left_sousuo_li">摄影</li>
+                <li class="unchange_local_con_left_sousuo_li">建筑</li>
+                <li class="unchange_local_con_left_sousuo_li">家庭</li>
+                <li class="unchange_local_con_left_sousuo_li">自驾</li>
+                <li class="unchange_local_con_left_sousuo_li">户外</li>
+                <li class="unchange_local_con_left_sousuo_li">必备</li>
+                <li class="unchange_local_con_left_sousuo_li">购物</li>
+                <li class="unchange_local_con_left_sousuo_li">周边</li>
+                <li class="unchange_local_con_left_sousuo_li">数据报告</li>
+                <li class="unchange_local_con_left_sousuo_li">旅行主义</li>
+                <li class="unchange_local_con_left_sousuo_li">观赏</li>
+                <li class="unchange_local_con_left_sousuo_li">休闲</li>
+            </ul>
+            <span><label>更多</label></span>
+        </div>
+        <!--顶部搜索END-->
+
+        <!--左边内容Start-->
+        <div class="local_con_left_content">
+            <!--每一个子内容START-->
+            <div th:each="strategy:${list.list}" >
+                <img th:src="${strategy?.cover}" class="local_con_left_content_img"/>
+                <div class="local_con_left_content_title">
+                    <div><a style="text-decoration: none;color: #0f0f0f" th:href="'/selectByPrimaryKey?id='+${strategy?.id}" th:text="${strategy?.title}"></a></div>
+                    <div th:text="${strategy?.abs}"></div>
+                    <div>
+                        <i class="iconfont icon-daohangdizhi"></i><span style="margin-left:5px;margin-right:20px" th:text="${strategy?.place}"></span>
+                        <i class="iconfont icon-yanjing"></i><span style="margin-left:5px;" th:text="${strategy?.watch}"></span>
+                    </div>
+                </div>
+            </div>
+            <!--每一个子内容END-->
+        </div>
+        <!--左边内容END-->
+
+        <!--分页器-->
+
+        <div class="block" id="wraper">
+            <div id="pager" class="pager clearfix"></div>
+            <div id="total" style="display: none" th:text="${list?.total}"></div>
+            <div id="currentPage" style="display: none"  th:text="${list?.pageNum}"></div>
+        </div>
+        <script type="text/javascript">
+            var page=$("#pager").zPager({
+                totalData:document.getElementById("total").innerText,
+                htmlBox: $('#wraper'),
+                btnShow: true,
+                ajaxSetData: false,
+                current:document.getElementById("currentPage").innerText,
+            });
+            //点击页数将当前页数赋值
+            var current;
+            function currentPage(val){
+                /*
+                    触发页码数位置： Page/js/jquery.z-pager.js 64行
+                */
+                current=val;
+            }
+            //发送请求
+            $("#pager a").click(function () {
+                // window.location.href="/getStartEgyAll?currentPage="+current;
+                let select_sousuo=sessionStorage.getItem("select_sousuo");
+                let classify= $(".local_con_left_sousuo>ul>li").eq(select_sousuo).text();
+                window.location.href="/getStrategyAll?currentPage="+current+"&classify="+classify;
+            })
+        </script>
+
+    </div>
+
+
+    <!--左边end-->
+
+
+    <!--右边start-->
+    <div class="local_con_right">
+        <span>本周热卖</span>
+        <!--右边每一个热卖Start-->
+        <div th:each="hotsell:${hotSellList}">
+            <img th:src="${hotsell?.phone}" class="local_con_right_div_img"/>
+            <div class="local_con_right_div_content">
+                <div th:text="${hotsell?.title}">
+                </div>
+                <div th:text="${'¥'+hotsell?.price}"></div>
+            </div>
+        </div>
+        <!--右边每一个热卖-->
+    </div>
+    <!--右边end-->
+</div>
+<!--主div的end-->
+<div th:replace="/common/ending :: end"></div>
+
+<script>
+
+    $(function () {
+		//访问sessionStorage中是否存在select_sousuo值，没有则设第一个li的样式变为橙色。有则设置对应的
+        let select_sousuo=sessionStorage.getItem("select_sousuo");
+        if(select_sousuo==null){
+            $(".local_con_left_sousuo>ul>li").removeClass("change_local_con_left_sousuo_li");//先移除全部
+            $(".local_con_left_sousuo>ul>li").eq(0).addClass("change_local_con_left_sousuo_li").removeClass("unchange_local_con_left_sousuo_li");
+        }else{
+            $(".local_con_left_sousuo>ul>li").eq(select_sousuo).addClass("change_local_con_left_sousuo_li").removeClass("unchange_local_con_left_sousuo_li");
+        }
+
+        $(".local_con_left_content>div").mouseover(function () {
+            $(this).children("div").children("div").eq(0).css("color", "orange");
+            $(this).addClass("changelocal_con_left_content");
+        }).mouseout(function () {
+            $(this).children("div").children("div").eq(0).css("color", "#333");
+            $(this).removeClass("changelocal_con_left_content");
+        })
+
+        $(".local_con_left_sousuo>ul>li").eq(4).nextAll().hide();
+        $(".local_con_left_sousuo>ul>li").click(function () {
+            //1.添加样式
+            $(this).addClass("change_local_con_left_sousuo_li").removeClass("unchange_local_con_left_sousuo_li")
+                .siblings().addClass("unchange_local_con_left_sousuo_li").removeClass("change_local_con_left_sousuo_li");
+            //2.往sessionStorage中设置值
+            let index=$(".local_con_left_sousuo>ul>li").index(this);
+            sessionStorage.setItem("select_sousuo",index);
+
+            //获取选中的值
+            window.location.href="/getStrategyAll?currentPage="+1+"&classify="+$(this).text();
+        });
+
+        $(".local_con_left_sousuo>span>label").click(function () {
+            if ($(this).text() == "更多") {
+                $(this).text("收起");
+                $(".local_con_left_sousuo>ul>li").eq(4).nextAll().show();
+            } else {
+                $(this).text("更多");
+                $(".local_con_left_sousuo>ul>li").eq(4).nextAll().hide();
+            }
+        });
+    })
+</script>
+
+</body>
+</html>

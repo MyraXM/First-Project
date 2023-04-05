@@ -1,0 +1,76 @@
+body {
+    font-size: 12px;
+    font-family: Arial, "Lucida Grande", "Microsoft Yahei", "Hiragino Sans GB", "Hiragino Sans GB W3", SimSun, "PingFang SC", STHeiti;
+    _font-family: Tahoma, Arial, Helvetica, STHeiti;
+    color: #666;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.fullscreen-bg {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/regist_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.regist_form {
+    width: 380px;
+    height: 320px;
+    background-color: white;
+    position: absolute;
+    top: 37%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.4375rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.regist_form > div {
+    width: 340px;
+    padding: 0px;
+    height: 28px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.regist_form_sr {
+    width: 320px;
+    height: 28px;
+    padding: 6px 0 6px 12px;
+    outline: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #d8d8d8;
+    border-radius: 0.32rem;
+}
+.jy_span{
+	display: block;
+	width:334px ;
+	margin-top: 15px;
+	margin-bottom:15px;
+	height: 18px;
+	color: red;
+}
+.regist_form_sumbit {
+    display: block;
+    width: 336px;
+    height: 45px;
+    border: 0px;
+    padding: 0px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: #ffa800;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0.32rem;
+    cursor: pointer;
+}

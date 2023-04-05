@@ -1,0 +1,103 @@
+body {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.section_background {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/background_login.jpg);
+    background-size: cover;
+}
+
+.section_background_sr {
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.625rem;
+
+/ / 内盒子定位 display: flex;
+    display: -webkit-flex; /*需要webkit内核*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section_background_sr>#username, .section_background_sr>#password {
+    width: 390px;
+    height: 48px;
+    border-radius: 0.3125rem;
+    border: 1px solid #C0C0C0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: Gray;
+    outline-style: none;
+}
+
+.section_background_sr>.wj {
+    color: #FFA500;
+    font-weight: 700;
+    margin-left: 330px;
+    cursor: pointer;
+    /*双击不选中*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin-bottom: 15px;
+}
+
+.section_background_sr>#login_sumbit{
+    width: 400px;
+    height: 48px;
+    border-radius: 0.3125rem;
+    background-color: #FFA500;
+    border: white 0rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    font-weight: 900;
+}
+
+.wjmm {
+    background-color: rgba(0, 0, 0, .4);
+    width: 180px;
+    height: 30px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50px;
+    font-size: 15px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin-bottom: 15px;
+
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.625rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+}
+
+.wjmm > a {
+    color: #FFA500;
+    outline: none;
+    text-decoration: none;
+}
+.error_msg{
+	color: red !important;
+	margin-bottom: 10px !important;
+    width: 100% !important;
+    padding-left: 100px !important;
+}

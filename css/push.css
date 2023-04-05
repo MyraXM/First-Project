@@ -1,0 +1,210 @@
+.select_type {
+    width: 980px;
+    height: 70px;
+    margin: 0px auto;
+    margin-top: 50px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    border-bottom: #efeeee 3px solid;
+}
+
+.select_type > div {
+    width: 170px;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+    color: #666;
+}
+
+/*选择类型的div样式*/
+.change_select_type_div {
+    border-bottom: #ffa800 3px solid !important;
+}
+
+.change_select_type_i {
+    color: orange !important;
+}
+
+.select_type > div > i {
+    font-size: 25px;
+    margin-right: 3px;
+    color: #efeeee;
+}
+
+
+.select_type > div:nth-child(2) {
+    cursor: pointer;
+}
+
+.select_type > div:nth-child(3) {
+    cursor: pointer;
+}
+
+/*输入标题*/
+.input_tilte {
+    width: 980px;
+    height: 50px;
+    margin: 0px auto;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    border: 1px solid #efeeee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_tilte > input {
+    width: 600px;
+    height: 24px;
+    padding: 7px 0 7px 10px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #666;
+    outline: none;
+    border: 0px;
+}
+
+.input_tilte > strong {
+    font-size: 12px;
+    margin-right: 40px;
+    color: #EFEFEF;
+    color: #ccc;
+}
+
+/*摘要*/
+.input_abstract {
+    width: 980px;
+    height: 50px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    border: 1px solid #efeeee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_abstract > input {
+    width: 600px;
+    height: 24px;
+    padding: 7px 0 7px 10px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #666;
+    outline: none;
+    border: 0px;
+}
+
+/*图片上传*/
+.loadup_img {
+    width: 980px;
+    height: 200px;
+    margin: 0px auto;
+    padding: 0px;
+    margin-bottom: 50px;
+}
+
+/*文章信息*/
+.content_info {
+    width: 980px;
+    height: 150px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+    border-top: 1px solid #efeeee;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.content_info > div {
+    width: 325px;
+    height: 74px;
+    border-bottom: 1px solid #efeeee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*每一个框里面的内容*/
+.content_info > div > span {
+    width: 90px;
+    height: 40px;
+    padding-left: 6px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #666;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.content_info > div > div {
+    flex: 1;
+    color: #666;
+    font-size: 16px;
+    height: 40px;
+    text-align: left;
+    line-height: 40px;
+    border-right: 1px solid #efeeee;
+    padding-right: 1.875rem;
+}
+
+.content_info > div:nth-child(3) > div {
+    border: 0px;
+}
+
+.content_info > div:nth-child(6) > div {
+    border: 0px;
+}
+
+.content_info > div > div > input {
+    height: 30px;
+    width: 100%;
+    outline: none;
+}
+
+/*富文本编辑器*/
+.fwb {
+    width: 980px;
+    min-height: 400px;
+    height: auto !important;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0px auto;
+    margin-bottom: 30px;
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+    min-height: 100 ^;
+}
+
+/*发表button*/
+.fb_button {
+    width: 980px;
+    height: 50px;
+    margin: 0px auto;
+}
+
+.fb_button > input {
+    background-color: #ff9e00;
+    color: #fff;
+    width: 90px;
+    height: 30px;
+    outline: none;
+    border: 0px;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}

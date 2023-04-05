@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-登录</title>
+	<!-- 引入样式 -->
+    <link rel="stylesheet" href="/css/login.css"/>
+</head>
+<body>
+
+<section class="section_background">
+
+    <form action="/login"  method="get" class="section_background_sr">
+        <div class="error_msg" th:text="${errorMsg}"></div>
+        <input id="username" type="text" name="username" value="13700000000"/>
+        <input id="password" type="password" name="password" value="123456"/>
+        <a class="wj">忘记密码</a>
+        <input id="login_sumbit" type="submit" value="登录"/>
+    </form>
+    <div class="wjmm">
+        还没有账号？
+        <a href="/register">马上注册</a>
+    </div>
+</section>
+</body>
+</html>

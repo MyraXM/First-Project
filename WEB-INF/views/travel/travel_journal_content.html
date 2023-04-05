@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-旅游游记</title>
+
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/travel_journal_content.css">
+    <link rel="stylesheet" type="text/css" href="/css/ending.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="/js/jquery-ui-1.13.1/jquery-ui.css"/>
+	<link href="/js/froala_editor/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+	<link href="/js/bootstrap/bootstrap.css"></li>
+	<script src="/js/jquery.js" type="text/javascript"></script>
+	<script src="/js/bootstrap/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--导航栏-->
+
+<div th:replace="/common/navbar :: navbar(3)"></div>
+
+
+<div id="app">
+	<div th:text="${session.user?.getId()}" id="userId" style="display: none"></div>
+	<div th:text="${travelnote?.id}" id="travelnoteId" style="display: none"></div>
+	<div th:text="${travelnote?.user.getId()}" id="authorID" style="display: none"></div>
+
+	<!--顶部个人信息START-->
+	<div class="top_user_info_title">
+	    <!--用户信息-->
+	    <div class="user_info">
+	        <div><span style="margin-right: 10px;" th:text="${travelnote?.user.username}"></span> <span>LV.1</span> <img src="/images/btn_sfollow.gif"><span th:text="${travelnote.writeTime}"></span></div>
+	        <div class="user_info_gn">
+	            <div id="update"><i class="iconfont icon-bianjimoban"></i></div>
+	            <div id="delete"><i class="iconfont icon-shanchu"></i></div>
+	        </div>
+	
+	    </div>
+	    <!--用户图片-->
+	    <div class="user_img">
+	        <div>
+	            <img  th:src="${travelnote?.user.headimg}"/>
+	        </div>
+	    </div>
+	</div>
+	<!--顶部个人信息END-->
+
+	<!--local_con START-->
+	<div class="local_con">
+	    <!--左边start-->
+	    <div class="local_con_left">
+	
+	        <!--出发信息-->
+	        <div class="local_con_left_goinfo">
+	            <ul>
+					<li><i class="iconfont icon-shijian"></i>出发时间<span>/</span><span th:text="${travelnote.goTime}"></span></li>
+					<li><i class="iconfont icon-gerenfill"></i>人物<span>/</span><span th:text="${travelnote.accompany}"></span></li>
+	                <li><i class="iconfont icon--"></i>出发天数<span>/</span><span th:text="${travelnote.days}"></span>天</li>
+	                <li><i class="iconfont icon-qiantianchong"></i>人均费用<span>/</span><span th:text="${travelnote.money}"></span>RMB</li>
+	            </ul>
+	        </div>
+	
+	        <!--顶部标题START-->
+	        <div class="local_con_left_sousuo" th:text="${travelnote?.title}">
+	        </div>
+	        <!--顶部标题END-->
+	
+	        <!--内容-->
+	        <div class="local_con_left_content">
+	            <!--旅游攻略内容-->
+	            <div th:utext="${travelnote?.content}"></div>
+	            <div><i class="iconfont icon-end"></i></div>
+	            <!--输入评论框Start-->
+	            <div class="pl_input">
+	                <div>本文著作权归驴窝窝 所有任何形式转载请联系作者 ©2022 驴窝窝</div>
+	                <div class="pl_input_sr">
+	                    <div>
+	                        <div class="wb_img"><i class="iconfont icon-txxg"></i></div>
+	                        <div class="wb_txt">
+	                            <textarea id="plcontent_input" required rows="5" cols="20" name="pl_input" placeholder="输入你的评论"></textarea>
+	                        </div>
+	                    </div>
+	                    <div><input id="addComment"  type="submit" value="评论" style="background-color: orange;"></div>
+	                </div>
+	            </div>
+	            <!--输入评论框End-->
+	        </div>
+	
+	        <!--评论infoshow-->
+	        <div class="pl_showinf">
+	            <div class="pl_showinf_total">评论<span th:text="${commentList?.size()}"></span> </div>
+	            <div class="pl_showinf_text" th:each="comment:${commentList}">
+	                <div class="pl_showinf_text_img">
+	                    <img th:src="${comment?.user.headimg}">
+	                </div>
+	                <div class="pl_showinf_text_info">
+	                    <div th:text="${comment?.user.username}"></div>
+	                    <div th:text="${comment?.time}"></div>
+	                    <div th:text="${comment?.content}"></div>
+	                </div>
+	            </div>
+	           
+	        </div>
+	
+	    </div>
+	
+	
+	    <!--右边start-->
+	    <div class="local_con_right" >
+	        <!--地址文字-->
+			<span>相关目的地：<span>中国   <span th:text="${travelnote?.place}"></span></span>  </span>
+	        <!--地址的图片-->
+	        <div>
+	            <img src="/images/cs.jpg" class="local_con_right_div_img"/>
+	            <strong class="local_con_right_div_info" th:text="${travelnote?.place}"></strong>
+	        </div>
+	    </div>
+	    <!--右边end-->
+	
+	
+	</div>
+	<!--local_con END-->
+	
+
+
+	
+</div>
+
+
+
+
+<!--主div的end-->
+<div th:replace="/common/ending :: end"></div>
+
+<script>
+	$(function () {
+		//判断登录作者的id是否正确。是否隐藏删除与编辑按钮
+
+		let userID=$("#userId").text();//登录的用户i
+		let authorID=$("#authorID").text();
+		if(userID!=authorID){
+			$("#update").hide();
+			$("#delete").hide();
+		}
+
+
+		//点击评论
+		$("#addComment").click(function () {
+			//获取用户id
+			let uid=$("#userId").text();
+			//获取文章id
+			let tid=$("#travelnoteId").text();
+			//获取评论内容
+			let content=$("#plcontent_input").val();
+			window.location.href="/insertComment?uid="+uid+"&artId="+tid+"&content="+content+"&type=1";
+		});
+
+		//点击编辑按钮
+		$("#update").click(function () {
+			let id=$("#travelnoteId").text();
+			window.location.href="/pushTravelNotes?id="+id;
+		});
+
+
+		//点击删除
+		//1.调用确认删除按钮
+		$("#delete").click(function () {
+			//获取文章id
+			let tid=$("#travelnoteId").text();
+			//发送删除文章请求
+			window.location.href="/deleteTravelNote?id="+tid;
+		});
+	})
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+
+.local_con {
+    width: 1046px;
+    height: auto !important;
+    margin: 30px auto;
+}
+
+/*左边信息*/
+.local_con_left {
+    width: 76%;
+    float: left;
+    background-color: white;
+    margin-right: 4%;
+    margin-top: 10px;
+    height: auto !important;
+
+}
+
+.local_con_left_sousuo {
+    width: 100%;
+    min-height: 50px;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0px 2px 0px #e5e5e5;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    font-size: 30px;
+    line-height: 50px;
+    color: #333;
+}
+
+/*浏览信息。创建时间等*/
+.time_info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/*作者信息*/
+.local_con_left_author {
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*作者图片样式*/
+.local_con_left_author_img {
+    width: 9.9%;
+    margin-left: 2.1%;
+    height: 80px;
+    display: flex;
+    display: -webkit-flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.local_con_left_author_img > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/*作者信息中间具体信息*/
+.local_con_left_author > div:nth-child(2) {
+    flex: 1;
+    height: 100%;
+    margin-left: 24px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.local_con_left_author > div:nth-child(2) > div:nth-child(1) {
+    width: 100%;
+    height: 16px;
+    color: #666;
+    line-height: 16px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.local_con_left_author > div:nth-child(2) > div:nth-child(2) {
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    height: 28px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 14px;
+    max-height: 28px;
+
+}
+
+/*作者信息右边TA的窝*/
+.local_con_left_author > div:nth-child(3) {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.local_con_left_author > div:nth-child(3) > i {
+    width: 70%;
+    font-size: 40px;
+    color: #3b9be7;
+    text-align: center;
+    margin-top: 10px;
+    border-left: 1px solid #fff;
+
+}
+
+.local_con_left_author > div:nth-child(3) > a {
+    width: 70%;
+    flex: 1;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    border-left: 1px solid #fff;
+}
+
+
+/*内容*/
+
+/*内容最大盒子*/
+.local_con_left_content {
+    width: 100%;
+    min-height: 300px;
+    height: auto !important;
+    margin-top: 40px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/*旅游攻略内容*/
+.local_con_left_content > div:nth-child(1) {
+    width: 100%;
+    height: auto;
+
+}
+
+.local_con_left_content > div:nth-child(2) {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.local_con_left_content > div:nth-child(2) > i {
+    font-size: 30px;
+    color: #d2d2d2;
+}
+
+/*输入框css*/
+.pl_input {
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.pl_input > div:nth-child(1) {
+    color: #d1d1d1;
+    font-size: 12px;
+}
+
+.pl_input_sr {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start
+}
+
+.pl_input_sr > div:nth-child(1) {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*文本域*/
+.wb_img {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.wb_img > i {
+    font-size: 50px;
+    color: #dddddd;
+}
+
+.wb_txt {
+    width: 87%;
+    height: 100%;
+}
+
+.wb_txt > textarea {
+    width: 98%;
+    height: 100%;
+    border-radius: 0.75rem;
+    border: 0.5px orange solid;
+    outline: none;
+    resize: none;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+
+/*按钮*/
+.pl_input_sr > div:nth-child(2) {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.pl_input_sr > div:nth-child(2) > input {
+    width: 120px;
+    height: 30px;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    background-color: #d2d2d2;
+    color: white;
+    border: 0px;
+    font-size: 15px;
+    margin-top: 50px;
+}
+
+
+/*评论showinfo*/
+.pl_showinf {
+    width: 100%;
+    min-height: 300px;
+    height: auto !important;
+}
+
+.pl_showinf_total {
+    width: 100%;
+    height: 100px;
+    font-size: 24px;
+    overflow: hidden;
+    line-height: 100px;
+    text-align: left;
+    color: #333;
+    font-weight: normal;
+}
+
+.pl_showinf_text {
+    width: 100%;
+    min-height: 100px;
+    height: auto !important;
+    border-bottom: #D1D1D1 1px solid;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.pl_showinf_text_img {
+    width: 8%;
+    height: 60px;
+}
+
+.pl_showinf_text_img > img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.pl_showinf_text_info {
+    width: 90%;
+    height: 100%;
+    margin-left: 2%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.pl_showinf_text_info > div:nth-child(1) {
+    width: 100%;
+    color: #333;
+    font-weight: normal;
+    line-height: 28px;
+    height: 28px;
+    font-size: 18px;
+}
+
+.pl_showinf_text_info > div:nth-child(2) {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    line-height: 14px;
+    height: 14px;
+    width: 100%;
+
+}
+
+.pl_showinf_text_info > div:nth-child(3) {
+    flex: 1;
+    font-size: 14px;
+    margin-top: 12px;
+    color: #666;
+    line-height: 28px;
+}
+
+
+/*右边信息*/
+.local_con_right {
+    float: left;
+    width: 19%;
+    padding-top: 0px;
+    min-height: 600px;
+    height: auto !important;
+}
+
+.local_con_right > div:nth-child(1) {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.local_con_right > div:nth-child(1) > div {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.local_con_right > div:nth-child(1) > div > i {
+    font-size: 25px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.local_con_right > div:nth-child(1) > div:nth-child(1) > i {
+    font-size: 18px;
+    color: orange;
+}
+
+.local_con_right > div:nth-child(1) > div:nth-child(2) > i {
+    color: #1593e3;
+}
+
+.local_con_right > div:nth-child(1) > div:nth-child(3) > i {
+    color: #98bf37;
+}
+
+.local_con_right > div:nth-child(1) > div:nth-child(4) > i {
+    color: #f89d15;
+}
+
+.local_con_right > span:nth-child(1) {
+    font-size: 18px;
+    line-height: 18px;
+    padding: 0px;
+    margin: 0px;
+    color: #333;
+}
+
+.local_con_right > div {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.local_con_right_div_img {
+    width: 40%;
+    height: 100%;
+}
+
+.local_con_right_div_content {
+    width: 60%;
+    height: 100%;
+}
+
+.local_con_right_div_content > div:nth-child(1) {
+    width: 90%;
+    height: 27.5px;
+    padding-left: 10%;
+    font-size: 14px;
+    color: #333;
+    /*使用以下可以使得多行文本用..代替:只允许在内核为谷歌的情况下使用
+    ie并不兼容.使用了
+    line-height:14px;
+    max-height:27.5px;
+    弥补ie的不足。使得了虽然没有省略号但是不溢出
+    */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 控制显示的行数 */
+    line-height: 14px; /* 对不支持浏览器的 */
+    max-height: 27.5px; /* 对不支持浏览器的弥补 */
+}
+
+.local_con_right_div_content > div:nth-child(2) {
+    width: 90%;
+    padding-left: 10%;
+    font-size: 14px;
+    height: 30px;
+    line-height: 42px;
+    color: orange;
+    font-weight: 500;
+    margin-top: 12px;
+}

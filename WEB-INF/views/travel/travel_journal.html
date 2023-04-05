@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-旅游游记</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/ending.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/travel_journal.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/page.css"/>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/jquery.z-pager.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+<!--导航栏-->
+<div th:replace="/common/navbar :: navbar(3)"></div>
+
+<!--最外层div-->
+<div class="local_con">
+    <!--左边div-->
+    <div class="local_con_left">
+        <!--搜索 START-->
+        <div class="local_con_left_search">
+            <div id="basic">
+                <!--unchange_child_1-->
+                <span class="change_child_1">最新游记</span>
+                <span class="unchange_child_1">最热游记</span>
+            </div>
+            <div>
+                <span>人均花费:
+                    <select id="money">
+                        <option value="100">100元内</option>
+                        <option value="500">500元内</option>
+                        <option value="1000">1000元内</option>
+                        <option value="2000">2000元内</option>
+                    </select>
+                </span>
+                <span>出行天数:
+                    <select id="day">
+                        <option value="3">3天内</option>
+                        <option value="10">10天内</option>
+                        <option value="20">20天内</option>
+                        <option value="30">30天内</option>
+                        <option value="60">60天内</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <!--搜索 END-->
+
+
+        <!--内容的div:一个内容START-->
+        <div class="local_con_left_content" th:each="item:${list.list}">
+            <div class="local_con_left_content_img"><img th:src="${item?.cover}"></div>
+            <div class="local_con_left_content_text">
+                <div><a th:href="${'/selectTravelByPrimaryKey?id='+item?.id}" th:text="${item?.title}"></a></div>
+                <div>
+                    <img th:src="${item?.user.headimg}">
+                    <div><span style="color: #a8a8a8;">作者</span>：<span th:text="${item?.user.username}"></span></div>
+                </div>
+                <div th:text="${item?.abs}">
+                </div>
+            </div>
+        </div>
+		<!--内容的div:一个内容END-->
+
+        <!--分页器-->
+        <div class="block" id="wraper">
+            <div id="pager" class="pager clearfix"></div>
+            <div id="total" style="display: none" th:text="${list.total}"></div>
+            <div id="currentPage" style="display: none" th:text="${list.pageNum}"></div>
+        </div>
+        <script type="text/javascript">
+            var page=$("#pager").zPager({
+                totalData:document.getElementById("total").innerText,
+                htmlBox: $('#wraper'),
+                btnShow: true,
+                ajaxSetData: false,
+                current:document.getElementById("currentPage").innerText,
+            });
+            //点击页数将当前页数赋值
+            var current;
+            function currentPage(val){
+                /*
+                    触发页码数位置： Page/js/jquery.z-pager.js 64行
+                */
+                current=val;
+            }
+            //发送请求
+            $("#pager a").click(function () {
+                // window.location.href="/getStartEgyAll?currentPage="+current;
+                let day=sessionStorage.getItem("day");
+                let money=sessionStorage.getItem("money");
+                let basic=sessionStorage.getItem("basic");
+                window.location.href="/selectTravelNotesAll?currentPage="+current+"&day="+day
+                +"&money="+money+"&basic="+basic;
+            })
+        </script>
+
+
+
+    </div>
+
+    <!--右边div-->
+    <div class="local_con_right">
+        <div class="lvgl"><i class="iconfont icon-kaishijixi"></i>旅游攻略</div>
+        <ul class="lvpm">
+            <li class="change_lvpm_q3"><em>1</em><strong>北海道</strong><a>雪中泡温泉</a></li>
+            <li class="change_lvpm_q3"><em>2</em><strong>安徽</strong><a>安徽宏村</a></li>
+            <li class="change_lvpm_q3"><em>3</em><strong>福建</strong><a>霞浦</a></li>
+            <li><em>4</em><strong>乐山</strong><a>峨眉山</a></li>
+            <li><em>5</em><strong>四川</strong><a>九寨沟</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--主div的end-->
+<div th:replace="/common/ending :: end"></div>
+
+<script>
+    $(function () {
+        //分别从sessionStorage中获取basic,day,money
+        let basic=sessionStorage.getItem("basic");
+        let day=sessionStorage.getItem("day");
+        let money=sessionStorage.getItem("money");
+        if(basic==null||basic==''||basic==undefined){//如果未定义
+            basic="最新游记";
+            sessionStorage.setItem("basic",basic);
+        }
+        if(day==null||day==''||day==undefined){//如果未定义
+            day=3;
+            sessionStorage.setItem("day",day);
+        }
+        if(money==null||money==''||money==undefined){//如果未定义
+            money=100;
+            sessionStorage.setItem("money",money);
+        }
+
+        //设置值
+        $("#day").val(day);
+        $("#money").val(money);
+        if(basic=='最新游记'){
+            $("#basic span").eq(0).addClass("change_child_1").removeClass("unchange_child_1").
+            siblings().addClass("unchange_child_1").removeClass("change_child_1");
+        }else{
+            $("#basic span").eq(1).addClass("change_child_1").removeClass("unchange_child_1").
+            siblings().addClass("unchange_child_1").removeClass("change_child_1");
+        }
+
+        //添加点击最新或最热时的样式
+        $("#basic span").click(function () {
+            $(this).addClass("change_child_1").removeClass("unchange_child_1").
+            siblings().addClass("unchange_child_1").removeClass("change_child_1");
+            basic=$(this).text();
+            sessionStorage.setItem("basic",basic);//存值
+            window.location.href="/selectTravelNotesAll?basic="+basic+"&day="+day+"&money="+money+"&currentPage=1";
+        });
+
+        //选中天数时
+        $("#day").change(function () {
+            //在sessionStorage存值
+            day=$("#day").find("option:selected").val();
+            sessionStorage.setItem("day",day);
+            window.location.href="/selectTravelNotesAll?basic="+basic+"&day="+day+"&money="+money+"&currentPage=1";
+        })
+
+        //选中价钱时
+        $("#money").change(function () {
+            //在sessionStorage存值
+            money=$("#money").find("option:selected").val();
+            sessionStorage.setItem("money",money);
+            window.location.href="/selectTravelNotesAll?basic="+basic+"&day="+day+"&money="+money+"&currentPage=1";
+        });
+
+    })
+</script>
+
+
+</body>
+</html>

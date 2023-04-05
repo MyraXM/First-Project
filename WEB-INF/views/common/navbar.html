@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--导航框-->
+<div id="navbar" th:fragment="navbar(selectNav)">
+    <div id="selectNav" style="display: none" th:text="${selectNav}"></div>
+    <div class="lww_header">
+        <div class="header_wrap">
+            <!--logo start-->
+            <div class="header_logo">
+                <a href="javascript:;" class="lww_logo"></a>
+            </div>
+            <!--logo end-->
+            <ul class="header_nav">
+                <li><a href="/index">首页</a></li>
+                <li>目的地</li>
+                <!--hublid中是http://127.0.0.1:8848/lww/strategy.html-->
+                <li><a href="/getStrategyAll">旅游攻略</a></li>
+                <li><a id="selectTravelNotesAll" href="javascript:;">旅游日记</a></li>
+                <script>
+                    $(function () {
+
+                        $("#selectTravelNotesAll").click(function () {
+                            console.log('发送请求');
+                            sessionStorage.setItem("day",3);
+                            sessionStorage.setItem("money",100);
+                            sessionStorage.setItem("basic","最新游记");
+                            window.location.href="/selectTravelNotesAll?day=3&basic=最新游记&money=100";
+                        });
+                    })
+
+
+                </script>
+                <li><a href="/pushStartEgy">发布</a></li>
+                <li>社区</li>
+            </ul>
+            <div class="header_search">
+                <input type="text">
+                <a class="iconfont icon-sousuo1"></a>
+            </div>
+            <!--登录的显示start-->
+            <div class="login_info">
+                <div class="header_daka">
+                    <a href="javascript:;">打卡</a>
+                </div>
+                <div class="header_msg">
+                    消息
+                    <i class="iconfont icon-xiajiantou"></i>
+                </div>
+                <a href="javascript:;">
+                    <img th:src="${session.user?.headimg}" id="login_user_headUrl">
+                </a>
+                <a href="/loginOut" title="退出登录" rel="nofollow" id="logoutbtn">退出登录</a>
+            </div>
+            <!--登录的显示send-->
+
+            <!--未登录的显示start-->
+            <div class="login-out">
+                <a class="iconfont icon-weibo" href="javascript:;" title="微博登录" rel="nofollow"></a>
+                <a class="iconfont icon-qq" href="javascript:;" title="QQ登录" rel="nofollow"></a>
+                <a class="iconfont icon-weixin" href="javascript:;" title="微信登录" rel="nofollow"></a>
+                <a id="_j_showlogin" title="登录驴窝窝" href="./login.html" rel="nofollow">登录</a>
+                <span class="split">|</span>
+                <a href="./regist.html" title="注册帐号" rel="nofollow">注册</a>
+            </div>
+            <!--未登录的显示end-->
+
+            <div id="userName" style="display: none"  th:text="${session.user?.getUsername()}"></div>
+        </div>
+    </div>
+
+
+    <!--导航框-->
+    <script>
+        $(function () {
+
+            //设置session中的用户在sessionStorage中
+            let userName=null;
+            if(userName==null){
+               userName=document.getElementById("userName").innerHTML;
+            }
+
+            //判断userName存在与否，用来判断是用户状态还是未登录状态
+            if(userName!=null&&userName.length>0){
+                document.getElementsByClassName("login_info")[0].style.display="flex";
+               document.getElementsByClassName("login-out")[0].style.display="none";
+            }else{
+                document.getElementsByClassName("login_info")[0].style.display="none";
+                document.getElementsByClassName("login-out")[0].style.display="flex";
+            }
+
+
+            //鼠标悬停改变样式
+            $(".header_nav li").mouseover(function () {
+                $(this).addClass("header_nav_hover");
+            }).mouseout(function () {
+                $(this).removeClass("header_nav_hover");
+            });
+
+            /*点击改变样式*/
+           let nav_select=$("#selectNav").text();
+            //选中的添加样式，不选中的移除样式
+            $(".header_nav li").eq(nav_select).children("a").addClass("onclickClass");
+            $(".header_nav li").eq(nav_select).siblings().children("a").removeClass("onclickClass");
+
+
+
+        })
+    </script>
+
+
+
+</div>
+
+</body>
+</html>
+

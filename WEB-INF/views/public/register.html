@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>骡窝窝-注册</title>
+    <link rel="stylesheet" href="/css/register.css"/>
+	<script src="/js/jquery.js"></script>
+
+</head>
+<body>
+<div class="fullscreen-bg">
+    <form class="regist_form"  method="post">
+        <span id="jy_span" class="jy_span"></span>
+        <input maxlength="12" id="username" name="username" class="regist_form_sr" type="text" placeholder="输入用户名" required="请输入用户名"/>
+        <input maxlength="6" id="password" name="password" class="regist_form_sr" type="password" placeholder="输入密码" required="请输入密码"/>
+        <input maxlength="6" id="again_password" name="again_password" class="regist_form_sr" type="password" placeholder="确认密码" required="请再次输入密码"/>
+        <input class="regist_form_sumbit" id="regist_form_sumbit" type="button" value="注册"/>
+        <div>注册视为同意《用户使用协议》</div>
+    </form>
+</div>
+    <script>
+        $(function () {
+            $("#regist_form_sumbit").click(function () {
+                //判断两次密码是否一致
+                let password=$("#password").val();
+                let again_password=$("#again_password").val();
+                if(password!=again_password){
+                    $("#jy_span").text("两次密码不一致");
+                }else{
+                    let username=$("#username").val();
+                    let password=$("#password").val();
+                    window.location.href="/registerUser?username="+username+"&password="+password;
+                }
+            });
+        })
+    </script>
+
+</body>
+</html>
