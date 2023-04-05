@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wolfcode.lww.mapper.TravelnotesMapper" >
+  <resultMap id="BaseResultMap" type="cn.wolfcode.lww.domain.Travelnotes" >
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="abs" property="abs" />
+    <result column="place" property="place" />
+    <result column="cover" property="cover" />
+    <result column="watch" property="watch" />
+    <result column="classify" property="classify" />
+    <result column="uid" property="uid" />
+    <result column="goTime" property="goTime" />
+    <result column="days" property="days" />
+    <result column="money" property="money" />
+    <result column="accompany" property="accompany" />
+    <result column="writeTime" property="writeTime" />
+    <result column="content" property="content" />
+    <association property="user" column="uid"
+                 select="cn.wolfcode.lww.mapper.UserMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" >
+    delete from travelnotes
+    where id = #{id}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+    insert into travelnotes (id,title, abs, place, cover, watch, classify, uid, goTime,
+      days, money, accompany, writeTime, content)
+    values (#{id},#{title}, #{abs}, #{place}, #{cover}, #{watch}, #{classify}, #{uid}, #{goTime},
+      #{days}, #{money}, #{accompany}, #{writeTime}, #{content})
+  </insert>
+  <update id="updateByPrimaryKey" >
+    update travelnotes
+    set title = #{title},
+      abs = #{abs},
+      place = #{place},
+      cover = #{cover},
+      watch = #{watch},
+      classify = #{classify},
+      uid = #{uid},
+      goTime = #{goTime},
+      days = #{days},
+      money = #{money},
+      accompany = #{accompany},
+      writeTime = #{writeTime},
+      content = #{content}
+    where id = #{id}
+  </update>
+  <update id="updateWatchById">
+    update travelnotes
+    set watch = watch+1
+    where id=#{id}
+
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    select id, title, abs, place, cover, watch, classify, uid, goTime, days, money, accompany, 
+    writeTime, content
+    from travelnotes
+    where id = #{id}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, title, abs, place, cover, watch, classify, uid, goTime, days, money, accompany, 
+    writeTime, content
+    from travelnotes
+  </select>
+</mapper>
